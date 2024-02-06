@@ -1,8 +1,8 @@
 from browser import Browser
-from pages.add_user_page import Add_user_page
+from pages.emag_create_new_user_page import Add_user_page
 
-from page.home_page import Home_page
-from page.login_page import Login_page
+from pages.emag_home_page import Home_page
+from pages.emag_login_page import Login_page
 
 def before_all(context):
     context,browser = Browser()

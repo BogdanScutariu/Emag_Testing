@@ -6,7 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from behave import *
 from emag_home_page import Home_page
 
-class Login_page(Home_page):
+
+class Emag_login_page:
+    pass
+
+
+class Login_page(Emag_login_page):
     Email = (By.XPATH, '//*[@id="user_login_email"]')
     Continua = (By.XPATH, '//*[@id="user_login_continue"]')
     Parola = (By.XPATH, '//*[@id="user_login_password"]')
