@@ -13,15 +13,16 @@ class Emag_home_page:
 
 
 class Add_user_page(Emag_home_page):
-    CONT_NOU = (By.XPATH, "/html/body/div[10]/div/div[2]/a[2]")
+    CONT_NOU = (By.XPATH, '//a[@class="btn btn-link btn-sm" and @href="/user/login?ref=hdr_signup_btn']
+")
     EMAIL = (By.XPATH, '//*[@id="user_login_email"]')
     CONTINUE_BUTTON = (By.XPATH, '//*[@id="user_login_continue"]')
     NAME_SURNAME = (By.XPATH, '//*[@id="user_register_full_name"]')
     PASSWORD = (By.XPATH, '//*[@id="user_register_password_first"]')
     CONFIRM_PASSWORD = (By.XPATH, '//*[@id="user_register_password_second"]')
-    CONDITION_BOX_ACCEPT = (By.XPATH, '/html/body/div[1]/div[2]/div[2]/div[2]/form/div[7]/div[1]/label')
+    CONDITION_BOX_ACCEPT = (By.XPATH, '//label[@for="user_register_agree_terms"]')
     CONTINUA = (By.XPATH, '//*[@id="user_register_continue"]')
-    PHONE = (By.XPATH, '/html/body/div[1]/div[2]/div[2]/a')
+    PHONE = (By.XPATH, 'a.text-center.font-weight-semibold[href="/user/authorize"]')
 
     def navigate_to_homepage(self):
         self.chrome.get("https://www.emag.ro/")
