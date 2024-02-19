@@ -1,30 +1,31 @@
-from emag_home_page import Home_page
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.core import driver
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from behave import *
 
-
-
-class Home_page(Home_page):
+class HomePage:
     WEBSITE = 'https://www.emag.ro/'
-    LOGIN_LINK = 'https://auth.emag.ro/user/login'
+    LOGIN_LINK = (By.LINK_TEXT, 'Intră în cont')
     SEARCH_BOX = (By.XPATH, '//*[@id="searchboxTrigger"]')
-    ADD_PRODUCTS_IN_CART = (By.XPATH, '//*[@id="card_grid"]/div[1]/div/div/div[4]/div[2]/form/button')
+    ADD_PRODUCTS_IN_CART = (By.XPATH, '//*[@id="card_grid"]//button[contains(@class, "add-to-cart")]')
 
+    def __init__(self, driver):
+        self.driver = driver
 
-    def login_link(self):
-        account_dropdown = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.LOGIN_LINK))
-        self.chrome.find_elements(*self.LOGIN_LINK)
+    def open_website(self):
+        self.driver.get(self.WEBSITE)
 
-    def search_box(self):
-        search_box = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.SEARCH_BOX))
-        search_box.send_keys(search_box)
+    def click_login_link(self):
+        login_link = WebDriverWait(self.driver, timeout=10).until(EC.element_to_be_clickable(self.LOGIN_LINK))
+        login_link.click()
 
-    def add_products_in_cart(self):
-        add_products_in_cart = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.ADD_PRODUCTS_IN_CART))
-        add_products_in_cart.send_keys(add_products_in_cart)
+    def search_product(self, product_name):
+        search_box = WebDriverWait(self.driver, timeout=10).until(EC.visibility_of_element_located(self.SEARCH_BOX))
+        search_box.send_keys(product_name)
+        search_box.send_keys(Keys.RETURN)
+
+    def add_product_to_cart(self):
+        add_to_cart_button = WebDriverWait(self.driver, timeout=10).until(
+            EC.element_to_be_clickable(self.ADD_PRODUCTS_IN_CART))
+        add_to_cart_button.click()

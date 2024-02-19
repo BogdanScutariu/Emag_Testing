@@ -10,13 +10,14 @@ time.sleep(5)
 
 
 
+from selenium import webdriver
 
-class Browser():
-    chrome = webdriver.Chrome()
+class Browser:
+    def __init__(self):
+        self.chrome = webdriver.Chrome()
 
-    def maximise_browser(self):
+    def maximize_browser(self):
         self.chrome.maximize_window()
-
 
     def close_browser(self):
         self.chrome.quit()

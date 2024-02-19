@@ -1,20 +1,10 @@
-import self
-
-from pages.emag_home_page import Home_page
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.core import driver
+from selenium.webdriver.support.wait import WebDriverWait
 
 
-class Emag_home_page:
-    pass
-
-
-class Add_user_page(Emag_home_page):
-    CONT_NOU = (By.XPATH, '//a[@class="btn btn-link btn-sm" and @href="/user/login?ref=hdr_signup_btn']
-")
+class EmagHomePage:
+    CONT_NOU = (By.XPATH, '//a[@class="btn btn-link btn-sm" and @href="/user/login?ref=hdr_signup_btn"]')
     EMAIL = (By.XPATH, '//*[@id="user_login_email"]')
     CONTINUE_BUTTON = (By.XPATH, '//*[@id="user_login_continue"]')
     NAME_SURNAME = (By.XPATH, '//*[@id="user_register_full_name"]')
@@ -22,51 +12,57 @@ class Add_user_page(Emag_home_page):
     CONFIRM_PASSWORD = (By.XPATH, '//*[@id="user_register_password_second"]')
     CONDITION_BOX_ACCEPT = (By.XPATH, '//label[@for="user_register_agree_terms"]')
     CONTINUA = (By.XPATH, '//*[@id="user_register_continue"]')
-    PHONE = (By.XPATH, 'a.text-center.font-weight-semibold[href="/user/authorize"]')
+    PHONE = (By.CSS_SELECTOR, 'a.text-center.font-weight-semibold[href="/user/authorize"]')
+
+    def __init__(self, driver):
+        self.driver = driver
 
     def navigate_to_homepage(self):
-        self.chrome.get("https://www.emag.ro/")
+        self.driver.get("https://www.emag.ro/")
 
-    def cont_nou(self):
-        cont_nou = WebDriverWait(self.chrome, timeout=3).until(EC.element_to_be_clickble(self.CONT_NOU))
-        self.chrome.find_element(*self.CONT_NOU).click()
+    def click_cont_nou(self):
+        WebDriverWait(self.driver, timeout=10).until(EC.element_to_be_clickable(self.CONT_NOU)).click()
 
-    def email(self, email="email_for_tests@yahoo.com"):
-        email = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.EMAIL))
-        email.send_keys(email)
+    def enter_email(self, email="email_for_tests@yahoo.com"):
+        email_input = WebDriverWait(self.driver, timeout=10).until(EC.presence_of_element_located(self.EMAIL))
+        email_input.send_keys(email)
 
-    def continue_button(self):
-        continue_button = WebDriverWait(self.chrome, timeout=3).until(EC.element_to_be_clickble(self.CONTINUE_BUTTON))
-        self.chrome.find_element(*self.CONTINUE_BUTTON).click()
+    def click_continue_button(self):
+        continue_button = WebDriverWait(self.driver, timeout=10).until(
+            EC.element_to_be_clickable(self.CONTINUE_BUTTON))
+        continue_button.click()
 
-    def name_surname(self, name_surname="Ion Ionescu"):
-        name_surname = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.NAME_SURNAME))
-        name_surname.send_keys(name_surname)
+    def enter_name_surname(self, name_surname="Ion Ionescu"):
+        name_surname_input = WebDriverWait(self.driver, timeout=10).until(
+            EC.presence_of_element_located(self.NAME_SURNAME))
+        name_surname_input.send_keys(name_surname)
 
-    def password(self, password="Parola12345"):
-        password = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.PASSWORD))
-        self.chrome.find_element(*self.PASSWORD).send_keys(password)
+    def enter_password(self, password="Parola12345"):
+        password_input = WebDriverWait(self.driver, timeout=10).until(
+            EC.presence_of_element_located(self.PASSWORD))
+        password_input.send_keys(password)
 
     def confirm_password(self, password="Parola12345"):
-        confirm_password = WebDriverWait(self.chrome, timeout=3).until(
+        confirm_password_input = WebDriverWait(self.driver, timeout=10).until(
             EC.presence_of_element_located(self.CONFIRM_PASSWORD))
-        self.chrome.find_element(*self.CONFIRM_PASSWORD).send_keys(password)
+        confirm_password_input.send_keys(password)
 
-    def condition_box_accepted(self):
-        condition_box_accepted = WebDriverWait(self.chrome, timeout=3).until(
-            EC.element_to_be_clickble(self.CONDITION_BOX_ACCEPT))
-        self.chrome.find_element(*self.CONDITION_BOX_ACCEPT).click()
+    def click_condition_box(self):
+        condition_box = WebDriverWait(self.driver, timeout=10).until(
+            EC.element_to_be_clickable(self.CONDITION_BOX_ACCEPT))
+        condition_box.click()
 
-    def continua(self):
-        continua = WebDriverWait(self.chrome, timeout=3).until(
-            EC.element_to_be_clickble(self.CONTINUA))
-        self.chrome.find_element(*self.CONTINUA).click()
+    def click_continua_button(self):
+        continua_button = WebDriverWait(self.driver, timeout=10).until(
+            EC.element_to_be_clickable(self.CONTINUA))
+        continua_button.click()
 
-    def phone(self):
-        phone = WebDriverWait(self.chrome, timeout=3).until(
-            EC.element_to_be_clickble(self.PHONE))
-        self.chrome.find_element(*self.PHONE).click()
+    def click_phone_link(self):
+        phone_link = WebDriverWait(self.driver, timeout=10).until(
+            EC.element_to_be_clickable(self.PHONE))
+        phone_link.click()
 
     def check_current_url(self):
-        actual_url = self.chrome.current_url
+        actual_url = self.driver.current_url
         expected_url = "https://www.emag.ro/"
+        assert actual_url == expected_url, f"The current URL {actual_url} is not as expected."

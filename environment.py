@@ -1,15 +1,13 @@
 from browser import Browser
-from pages.emag_create_new_user_page import Add_user_page
+from pages.emag_home_page import Emag_home_page
+from pages.emag_login_page import EmagLoginPage
+from selenium import webdriver
 
-from pages.emag_home_page import Home_page
-from pages.emag_login_page import Login_page
 
-def before_all(context):
-    context,browser = Browser()
-    context.login_page = Login_page()
-    context.home_page = Home_page()
-    context.add_user_page = Add_user_page()
-    context.browser.maximise_windows()
+def before_scenario(context, scenario):
+    context.driver = webdriver.Chrome()
+    context.emag_login_page = EmagLoginPage(context.driver)
 
-def after_all(context):
-    context.browser.close_browser()
+
+def after_scenario(context, scenario):
+    context.driver.quit()
