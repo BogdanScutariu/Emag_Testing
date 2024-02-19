@@ -1,4 +1,6 @@
-Test Plan for www.emag.ro
+#.Test Plan for www.emag.ro
+
+
 1.Introduction
 Purpose of the Test Plan
 Scope of Testing
