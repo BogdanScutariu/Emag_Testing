@@ -1,14 +1,14 @@
-Test Plan for www.emag.ro
-1. Introduction
+###Test Plan for www.emag.ro
+#1. Introduction
 Purpose of the Test Plan
 Scope of Testing
 Testing Objectives
 Roles and Responsibilities
-2. Test Strategy
+#2. Test Strategy
 Testing Approach (Manual/Automated)
 Test Environment
 Tools and Technologies
-3. Test Coverage
+#3. Test Coverage
 Functional Testing
 Non-Functional Testing
 User Interface Testing
@@ -16,7 +16,7 @@ Performance Testing
 Security Testing
 Compatibility Testing
 Accessibility Testing
-4. Test Scenarios
+#4. Test Scenarios
 User Authentication and Authorization
 
 Verify user registration functionality.
