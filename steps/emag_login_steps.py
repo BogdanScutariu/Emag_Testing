@@ -21,7 +21,7 @@ def step_impl(context):
     context.emag_login_page.check_curent_url()
 
 
-@then('The user recive a error message {error_message} and cannot login to website')
+@then('The user recive a error message {error_message} and cannot login to weite')
 def step_impl(context,error_message):
     context.emag_login_page.check_error_message(error_message)
 

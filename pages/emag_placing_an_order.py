@@ -20,7 +20,7 @@ CONTINUA = (By.XPATH, '//*[@id="cart-products"]/div/div[2]/div[1]/div/div[2]/div
       account_dropdown.click()
       self.chrome.find_element(*self.LOGIN_WEBSITE)
       
-    def search_box(self, "iphone 15"):
+    def search_box(self):
         search_box = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.SEARCH_BOX))
         search_box.send_keys(search_box)
 
