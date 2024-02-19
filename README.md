@@ -1,4 +1,4 @@
-#.Test Plan for www.emag.ro
+# Test Plan for www.emag.ro
 
 
 1.Introduction
