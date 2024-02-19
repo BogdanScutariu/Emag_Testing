@@ -1,16 +1,16 @@
 # Test Plan for www.emag.ro
 
 
-1.Introduction
+## 1.Introduction
 Purpose of the Test Plan
 Scope of Testing
 Testing Objectives
 Roles and Responsibilities
-2. Test Strategy
+## 2. Test Strategy
 Testing Approach (Manual/Automated)
 Test Environment
 Tools and Technologies
-#3. Test Coverage
+## 3. Test Coverage
 Functional Testing
 Non-Functional Testing
 User Interface Testing
@@ -18,7 +18,7 @@ Performance Testing
 Security Testing
 Compatibility Testing
 Accessibility Testing
-4. Test Scenarios
+## 4. Test Scenarios
 User Authentication and Authorization
 
 Verify user registration functionality.
@@ -67,12 +67,12 @@ Notifications
 
 Verify email notifications for order confirmation, shipping updates, etc.
 Test browser notifications for new deals, promotions, etc.
-5. Test Cases
+## 5. Test Cases
 Create detailed test cases for each scenario listed above, covering positive and negative test cases.
-6. Test Execution
+## 6. Test Execution
 Execute test cases manually or using automated testing tools.
 Record test results and any defects found.
-7. Defect Management
+## 7. Defect Management
 Document and prioritize defects found during testing.
 Assign responsibilities for defect resolution.
 Retest fixed defects to ensure resolution.
