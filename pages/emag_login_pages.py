@@ -7,6 +7,7 @@ from behave import *
 
 
 class EmagLoginPage:
+    Login_Button = (By.CSS_SELECTOR, 'div.dropdown-footer > a.btn.btn-emag')
     Email = (By.XPATH, '//*[@id="user_login_email"]')
     Continua = (By.XPATH, '//*[@id="user_login_continue"]')
     Parola = (By.XPATH, '//*[@id="user_login_password"]')
@@ -14,6 +15,8 @@ class EmagLoginPage:
     Telefon = (By.XPATH, '/html/body/div[1]/div[2]/div[2]/a')
     EroareLogare = (By.XPATH, '//form/div[4]/div/div')
 
+    def login_button(self):
+        self.chrome.find_element(*self.Login_Button).click()
     def email(self, email="email_for_tests@yahoo.com"):
         email_input = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.Email))
         email_input.send_keys(email)

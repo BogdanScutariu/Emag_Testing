@@ -16,7 +16,7 @@ def step_impl(context):
 def step_impl(context, error_message):
     context.emag_login_page.check_error_message(error_message)
 
-@when('We insert username {username} and password {password}')
+@when('We insert username {} and password {password}')
 def step_impl(context, username, password):
     context.emag_login_page.insert_username(username)
     context.emag_login_page.insert_password(password)

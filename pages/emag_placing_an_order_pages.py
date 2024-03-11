@@ -3,7 +3,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
-class EmagActions:
+class Emag_Home_Page:
+    WEBSITE = 'https://www.emag.ro/'
+    LOGIN_LINK = (By.LINK_TEXT, 'Intră în cont')
+    SEARCH_BOX = (By.XPATH, '//*[@id="searchboxTrigger"]')
+    ADD_PRODUCTS_IN_CART = (By.XPATH, '//*[@id="card_grid"]//button[contains(@class, "add-to-cart")]')
     def __init__(self, chrome):
         self.chrome = chrome
 

@@ -4,7 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
 from behave import *
 
-class HomePage:
+class Emag_Home_Page:
     WEBSITE = 'https://www.emag.ro/'
     LOGIN_LINK = (By.LINK_TEXT, 'Intră în cont')
     SEARCH_BOX = (By.XPATH, '//*[@id="searchboxTrigger"]')
