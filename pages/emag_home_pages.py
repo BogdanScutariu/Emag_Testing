@@ -7,7 +7,7 @@ from browser import Browser
 
 
 class Emag_Home_page():
-    def navigate_to_Emag_home_page(self):
+    def navigate_to_Emag_home_pages(self):
         self.chrome.get("https://www.emag.ro/")
 
     def logout_of_the_website(self):
