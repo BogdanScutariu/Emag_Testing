@@ -1,12 +1,11 @@
 from browser import Browser
-from pages.emag_home_page import Emag_home_page
-from pages.emag_login_page import EmagLoginPage
 from selenium import webdriver
+from pages.emag_login_pages import EmagLoginPage
 
-
-def before_scenario(context, scenario):
+def before_all(context):
     context.driver = webdriver.Chrome()
-    context.emag_login_page = EmagLoginPage(context.driver)
+    context.browser = Browser()
+    context.emag_login_page = EmagLoginPage()
 
 
 def after_scenario(context, scenario):

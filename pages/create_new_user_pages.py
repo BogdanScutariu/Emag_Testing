@@ -3,7 +3,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class EmagHomePage:
+class Emag_Home_Page:
+    def __init__(self, driver):
+        self.driver = driver
+
     CONT_NOU = (By.XPATH, '//a[@class="btn btn-link btn-sm" and @href="/user/login?ref=hdr_signup_btn"]')
     EMAIL = (By.XPATH, '//*[@id="user_login_email"]')
     CONTINUE_BUTTON = (By.XPATH, '//*[@id="user_login_continue"]')
@@ -14,10 +17,13 @@ class EmagHomePage:
     CONTINUA = (By.XPATH, '//*[@id="user_register_continue"]')
     PHONE = (By.CSS_SELECTOR, 'a.text-center.font-weight-semibold[href="/user/authorize"]')
 
+    def navigate_to_homepage(self):
+        self.driver.get("https://www.emag.ro/")
+
     def __init__(self, driver):
         self.driver = driver
 
-    def navigate_to_homepage(self):
+    def navigate_to_emag_home_page(self):
         self.driver.get("https://www.emag.ro/")
 
     def click_cont_nou(self):

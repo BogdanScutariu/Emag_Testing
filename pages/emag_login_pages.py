@@ -6,12 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from behave import *
 
 
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-
-
 class EmagLoginPage:
     Email = (By.XPATH, '//*[@id="user_login_email"]')
     Continua = (By.XPATH, '//*[@id="user_login_continue"]')
@@ -19,9 +13,6 @@ class EmagLoginPage:
     Continuare = (By.XPATH, '//*[@id="user_login_continue"]')
     Telefon = (By.XPATH, '/html/body/div[1]/div[2]/div[2]/a')
     EroareLogare = (By.XPATH, '//form/div[4]/div/div')
-
-    def __init__(self, chrome):
-        self.chrome = chrome
 
     def email(self, email="email_for_tests@yahoo.com"):
         email_input = WebDriverWait(self.chrome, timeout=3).until(EC.presence_of_element_located(self.Email))
